@@ -1,0 +1,570 @@
+---------------------------REACT.JS-------------------------------------
+React, sometimes referred to as a frontend JavaScript framework,but it is an JavaScript library created by Facebook.
+
+1.REACT IS MAINLY USED TO BUILT SINGLE PAGE APPLICATION WITH EASE
+
+2.React is a JavaScript library for building user interfaces.
+
+3.React allows us to create reusable UI components.
+
+react is An 
+components-based---REUSABLE CODE
+declarative---WE NOT CHANGE DOM FOR EVERY-ELEMENT
+state-driven-----USES STATE TO CHANGE DOM
+JavaScript library
+extremely popular
+created by facebook
+
+
+COMPONENTS
+1. React applications are entirely made out of
+components
+2. Building blocks of user interfaces in React
+3. Piece of UI that has its own data, logic,
+and appearance (how it works and looks)
+4. We build complex UIs by building multiple
+components and combining them
+5. Components can be reused, nested inside
+each other, and pass data between them
+
+---------------------------------------------------------------component ------------------------------
+
+1.component a pices of logic,design,jsx is known components
+2.they should have capital letter in first word of function name to reuse any where
+3.can be resused as <Pizza/> this component passed to another component
+
+
+function Pizza() {
+  return (
+    <div>
+      <img src="pizzas/spinaci.jpg" alt="png"></img> 
+      <h3>Pizza Spinaci</h3>
+      <p>Tomato, mozarella, spinach, and ricotta cheese</p>
+    </div>
+  );
+}
+
+4.passing component -------------
+
+function Main() {
+  return (
+    <main className="menu">
+      <h2> our menu</h2>
+      <Pizza />
+      <Pizza />
+      <Pizza />
+    </main>
+  );
+}
+
+-----------------------------------------------------------------styling in jsx---------------------------
+1.the className is an selecter in react to acess in css to design
+2.(className) it should be return in camelcase 
+3.it is an global one can be used any where in doc
+
+function Header() {
+  return (
+    <header className="header">--------
+      <h1>Fast react pizza co.</h1>
+    </header>
+  );
+}
+
+another to use class in react-it-self----------------
+1.inline and object styles in react uses camelcase rule 
+
+function Header() {
+  const style = {
+    color: "red",
+    fontSize: "48px",
+    textTranform: "uppercase",
+  };
+  return (
+    <div>
+      <h1 className="header" style={style}> or style={{ color: "red"}}--------
+        Fast react pizza co.
+      </h1>
+    </div>
+  );
+}
+
+
+--------------------------------------------------------jsx------------------------------------------------
+1.it is an combination of html,css,js,components in react
+2.which help to built component and ui
+
+
+
+----------------------------------------------------------props-------------------
+1.Props are used to pass data from parent
+components to child components (down
+the component tree)
+
+2. Essential tool to configure and customize
+components (like function parameters)
+
+3. With props, parent components control-------------------------------props are ONE-WAY DATA FLOW only from parent to child 
+how child components look and work
+
+4. Anything can be passed as props: single
+values, arrays, objects, functions, even
+other components
+
+5.Props are read-only, they are
+immutable! This is one of
+React’s strict rules.
+
+6. If you need to mutate props,
+you actually need state
+
+example:
+function Footer() {
+  const openhr = 10;
+  const closehr = 11;
+  const currentHr = new Date().getHours();
+  const shopopen = currentHr >= openhr && currentHr < closehr;
+  return (
+    <footer className="footer">
+      {shopopen ? (
+        <Openhr closehr={closehr} />
+      ) : (
+        `we are closed now come back in ${openhr}:00`
+      )}
+      <Openbtn disabled={!shopopen} />
+    </footer>
+  );
+}
+
+function Openhr(props) {
+  return <p>we are open now until {props.closehr}:00</p>;
+}
+
+-----------------------another way of passing props destruction----
+
+function Pizza({ pizzaobj }) {
+  console.log(pizzaobj);
+  return (
+    <li className="pizza">
+      <img src={pizzaobj.photoName} alt={pizzaobj.name}></img>
+      <h3>{pizzaobj.name}</h3>
+      <p>{pizzaobj.ingredients}</p>
+      <span>{pizzaobj.price}</span>
+    </li>
+  );
+}
+
+---------------------------------------------------react-fragmentation--------------------------------------
+1.used to wrap 2 are more elements in jsx syntax
+2.it is an very use full 
+3.<></>--syntax
+
+------------------------------------------condinasal rendering ----------------------------
+1.if and else ccannot used ib jsx syntax because of it statements this won't work in {} brackets 
+2.ternare operater age >= 18 ? "he can drink": "he cannot drink";
+3.short circuting using (and&& , or|| ) operater  
+
+     true && for this ans will be always ture value
+      false || for this ans will be false valuee
+
+ <footer className="footer">
+      {shopopen ? (
+        <Openhr closehr={closehr} />
+      ) : (
+        `we are closed now come back in ${openhr}:00`
+      )}
+      <Openbtn disabled={!shopopen} />
+    </footer>
+
+----------------------------------------------------------handleing click events in react.js---------------------------------
+1 syntax-- onClick={handlenext}
+2. syntax - onMouse={handleclick}
+
+
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+          onClick={handlepre}
+        >
+          previous
+        </button>
+        <button
+          style={{ backgroundColor: "#7950f2", color: "#fff" }}
+          onClick={handlenext}
+        >
+------------------------------------------------------user-state-in react-----------------------------------------------------
+1.usestate,usereffects..so on all this are react hooks
+
+2.syntax- const [time,settime] = usestate(1) --by default it gives an array of two thing one is value of (1) and f()
+
+3.can only call on main function components ---
+
+4.used to update the ui on current state of data with out any dom usage 
+
+5.there are 2 values in userstate const [time,settime] = usestate(1) time is used store value 1 and settime used to change thr state
+
+
+example:
+
+ const [step, setStep] = useState(1);
+  const [test, setTest] = useState({ name: "harshith" });
+
+
+
+
+function handlePre() {
+    if (step > 1) setStep(step - 1);
+  }
+
+  function handleNext() {
+    if (step < 3) setStep(step + 1);
+    setTest({ name: "sai" });
+  }
+
+
+-----------------------------------------------controlle elements uisng state--------------------------------------------
+1.this help react to get value of any input,form that should be controlled by userstate()
+
+2.state pass though the jsx form as an value={} attribute value to store form value on change of form
+
+
+-------------------------------------------------------state-managemment-in-react----------------------------------------------------
+
+1.local state vs global
+2.global state can be done using only context react api or redux this are external lib
+3.lifting up state for passing props from parents to child for App component it is always an pareant to other components
+
+
+4.main concept------- of where to create state and when to use state in components
+
+
+5.derived state-we can use state varable for other purpose without creating new state to rerender the component
+
+
+const [coursebuy,setcoursebuy] = useState({js:true;react:true})
+we need to create an state for total no of items to buy,and total cost of items 
+
+or 
+const total= coursebuy.length
+const cost= course.filter()
+
+COMPONENT CAN BEE WRITTEN AS <Button/> or also like this <Button><p>hi</p><Button/> it used for some jsx syntax can be written in new component for passing props using predeifed word called as " childern " prop === hi
+
+
+---------------------------------------------------------------------part-2------------------------------------------------------------------
+
+1.how to think about component
+2.composition
+3.readability 
+4.how to split an component
+5.building layout
+
+
+---------------think in react-------to become good react developer --------------
+
+
+1.after having ui of an app thing in react way to write good code so first devide the every ui parts into  other small component so it will be easy to devlop
+
+2.to create any new component it should follow 3 rules they are (we should not make components very big or small)
+we should make component with below points
+
+   *logic separation
+   *reusability 
+   *low complexity 
+
+3.first create an big component based on that you can split into small components 
+
+4.components are 3 type they are statelees component,statefull com,structure com
+   *stateless com---style,jsx,props--very reusable 
+   *state com----userstate,jsx,style,props--reusable
+   *structure com---big-com like layout,pages exmaple: App component has other main componet layout
+
+
+
+------------------------------------component composition ------reuseability
+
+1.components should be named as per the what it does or what it will display
+
+2.prop drilling means--sometime we need send some data to down part of component up to 6to more so it called as prop drilling
+
+3.componnet compositon it used to reduse prop drilling,reuse- by uisng the {children }prop data in between the component know as children
+ <Nav>any jsx or other component know as children here<Nav/> we can pass children as prop 
+
+
+4.componnet compositon is verry important to reuse an component or to reduce prop drilling example: project-4
+
+
+<Main>
+        <Box1>
+          <MovieList movies={movies} />
+        </Box1>
+        <Box1>
+          <Ratingbox2 watched={watched} />
+          <Ratingul watched={watched} />
+        </Box1>
+      </Main>
+
+or
+ <Box1 harshith={<MovieList movies={movies} />} /> we can pass harshith as prop 
+
+5.event in js can only work on jsx syntax if write onClick event on component it will be an prop
+
+6.proptype checking used to check the type of the prop to reduce error in code we should import this feature as
+
+//syntax
+  import PropType from prop-type --instead of this we can code in typescript 
+
+  componentsname.proptype{
+    padding: proptype.number -----global
+                             --useCase are if an component has more props or reusability 
+}
+
+
+----------------------------------------------react working nature in background important ---------------------
+
+1. react uses components to built Ui the comp is just manifest or instance that carries it own jsx ,props
+
+2. rendering in react is about calling that component every time it render it will call comp that all it will also do dom-manuplation
+   and also render children comp if there is any change in elements by using {diffing}
+
+3.rendering can only trigerd by app starting,inital loading of website,by using state
+  rendering done by reactdom library
+
+4.diffing is an concep that help to manipulate DOM in react
+5.key prop it help in dom tree to not get conflict while rendering 
+6.don't set setfun-state in render logic
+
+
+---------------------------------------sec-12 useeffects - data fetching-----------------------------------------------
+1.comp lifecycle has 3 stages they are 
+   *mount,initial render---inital page rendering
+
+   *re-render---change based on new prop,state,parent comp rendering ,context??
+
+   *unmount--while removing comp,prop,jsx
+
+
+what is the use of the comp lifecycle we can use the userHook in between this lifecycle 
+
+2.don't set setfun-state in render logic if you set it will  looped in multiple renders 
+
+3.that why we {UserEffect} it only run some part of code after completion of initial rendering 
+   syntax:  useEffect(()=>{
+
+            || your code
+
+  },[])** here we have dependeci array [] without this it will run this code after every render
+
+4.useEff also know as side-effect this side-Eff used for running an pices of code in comp lifecycle like after an inital render,on re-render,un-mounting
+
+5.useeffect is doesn't return any promise or call back we should use another functionin the this usereffect
+
+6.when we use react 18 with strict mode and we use effect it will render 2 time alwayes in only dev mode in production it will render only 1 time 
+ <React.StrictMode>
+    <App />
+  </React.StrictMode>
+
+7[x,y,z] dependence array var-state if changes it causes re-render of comp and useEffect
+
+  * [x,y,z]dependence array var-state  useEffect run on on-muont and when ever the x,y,z changes useeffect ,comp re-renders
+
+  *[]empty dependence array useeffect run only on-mount
+  
+  *no dependence array run useEffect on every render ---bad code 
+
+
+
+
+8.useEffect cleaning up function for removing an function after an umount-- new concept 
+example: if you start timer you should stop it,if you call api get data and stop the api call
+
+ usecases-are like title --we are changing the title when we click on any movie if we try to not selecte also it showing old movie as title here we have to use clean-up function to remove those title name after unmounting of comp
+
+*clean-up function work only when unmounted or re-render
+
+useEffect(() => {
+    if (!title) return;
+    document.title = `Movie | ${title}`;
+
+    return function cleanup() {     -------------------------------//cleanup function 
+      document.title = `usepopcorn`;------------------------set to default value
+      icons[0].setAttribute("href", `${"./image.png"}`);
+    };
+  }, [title, poster]);
+
+
+------
+
+9.raceconditon is an concept---if an api call has to many req like 5 requests if 3th req is take so much time to load then 4,5th req have to wait until it resolve this know an raceconditon
+
+
+
+
+------------------------------------------------------------------sec--13---------------------------------------------------------------
+1.hooks are easy to learn ,hard to master
+2.Rules of hook
+3.Deep dive into useState
+4.useRef
+5.custom hooks
+
+
+1.THERE are more then 20 built in hooks in react.js and they are
+   
+   useState,useEffect,useReducer,useContext]-----most-used--we will learn
+
+   useRef,useCallback,useMemo,useTransition,useDeferredValue]---less used--we will learn
+
+
+useLayoutEffect,useDebugValue,useImperativeHandle,useId]--less use--will not learn them
+
+
+
+2.ON-EVERY RENDER react built an virtual-DOM in this dom we have FIBER-TREE in-each fiber-box it has prop,list of hooks
+
+3.userHooks can't be render based on conditionaly because it will broke entire react code,we can't set sideeffect on conditional rendering 
+
+ ex:  if(x === 10) return [hi,sethi] = useState()----wrong-❌
+ ex:  if(x === 10) return <p> hi</p>----wrong-❌
+
+TIP--WE DISABLE the eslint using /* eslint disable */
+
+3.useState--final we can create useState using 2 methods and set data in 2methods
+
+    1.simple-way-----const[count,setcount]=useState(23);
+
+    2.based on function ---const [watched, setWatched] = useState(() => {
+    const storedValue = localStorage.getItem("MovisList");
+    return JSON.parse(storedValue);
+    }); ----Function must be pure and accept no
+    arguments. Called only on initial render
+
+
+
+   2.setiing -setcount(200) or using call back setcount((c)=>c+1)---Make sure to NOT mutate objects
+or arrays, but to replace them
+
+
+-----------useRef------------method----------------------
+
+1.“Box” (object) with a mutable .current property that is
+persisted across renders (“normal” variables are always reset)
+
+2.Two big use cases:
+
+*Creating a variable that stays the same between-------------------------------RELEARN THIS CONCEPT 
+renders (e.g. previous state, setTimeout id, etc.) 1
+* Selecting and storing DOM elements
+
+3.Refs are for data that is NOT rendered: usually only appear in
+event handlers or effects, not in JSX (otherwise use state)
+☝ Do NOT read write or read .current in render logic (like state)
+
+ const inputel = useRef(null);///syntax  --- ref={inputEl} pass ref value in from 
+
+
+------------------------------------------------------------------------------
+
+///Custom-Hook is normal function that used to reuses logic we have it is not component
+
+--syntax function useMovies(arg){---------------{use}-keyword is main syntax it accepts arguments,return values 
+   
+
+return {hi,query,serch}or[hi,query,serch]
+///useing it just import it in your file --const {hi,query,serch}or[hi,query,serch]  = useMovies(arg)
+
+
+----------------------------------------------------------------USEREDUCER--SEC-16-------------------------------------------------------
+
+* to built local server for fake api "server": "json-server --watch data/questions.json --port 8000" need to add this command to json files
+
+
+1.useReduce see projects so you can uderstand easly for better understanding 
+
+
+
+---------------------------------------------------------------sec-17--Single-Page-Application--------------------------------------------
+---------------very-important
+1.routing in react
+2.spa in react
+
+1.from here onward we use vite.js for create an new create app
+
+     commands-for-vite-pj: npm create vite  
+
+2.to install router:
+    
+    command: npm i react-router-dom
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+ <BrowserRouter>                                                                
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/price" element={<Price />} />
+          <Route path="/product" element={<Product />} />
+          <Route path="*" element={<Pagenotfound />} />
+        </Routes>
+      </BrowserRouter>
+
+
+ <nav>
+      <ul>
+        <li>
+          <NavLink to="/">Home</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Price">Price</NavLink>
+        </li>
+        <li>
+          <NavLink to="/Product">Product</NavLink>
+        </li>
+      </ul>
+    </nav>
+
+
+
+
+
+/////////////styling in react.js----------------------------
+inline css, styleprop ,local scope
+
+css,sass file, classname prop ,global
+
+css modules, classname prop ,compoent based
+
+css-in-js, create new comp, compoent based
+
+utility-first-css ,tailwindcss ,classname prop
+
+
+we use css modules for this project it very simple and very easy to use example it like local scope css can used by only the parent jsx file
+
+syntax to create css module are
+
+App.jsx--js file
+App.module.css ---css module file
+
+in jsx file we have to import that files as --------- import styles from "./App.module.css";
+
+
+using in jsx <div className={styles.countryList}>
+
+
+-----------URL -- STATE-MANAGEMENT-------------------
+1.USE TO STORE UI USESTATE in URL AS A GLOBAL STATE easy to acess the data in url can pass data to children comp
+
+2.GOOD WAY TO PASS DATA FROM ONE PAGE TO ANOTHER PAGE
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
