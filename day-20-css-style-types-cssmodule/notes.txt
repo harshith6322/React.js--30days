@@ -1,0 +1,23 @@
+/////////////styling in react.js----------------------------
+inline css, styleprop ,local scope
+
+css,sass file, classname prop ,global
+
+css modules, classname prop ,compoent based
+
+styled-comp, create new comp, compoent based
+
+utility-first-css ,tailwindcss ,classname prop
+
+
+we use css modules for this project it very simple and very easy to use example it like local scope css can used by only the parent jsx file
+
+syntax to create css module are
+
+App.jsx--js file
+App.module.css ---css module file
+
+in jsx file we have to import that files as --------- import styles from "./App.module.css";
+
+
+using in jsx <div className={styles.countryList}>
